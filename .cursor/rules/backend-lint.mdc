@@ -1,0 +1,17 @@
+---
+description: Black and Ruff conventions for the backend
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# Backend lint and format
+
+- Format with **Black**. Lint with **Ruff**.
+- Run from `backend/`: `poetry run black .`, `poetry run ruff check .`.
+- Do not add flake8, isort, or autopep8. Ruff covers import linting.
+- CI runs `black --check` and `ruff check`. Format before pushing.
+
+```bash
+poetry run black .
+poetry run ruff check .
+```

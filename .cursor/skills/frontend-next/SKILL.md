@@ -25,6 +25,9 @@ Run from `frontend/`:
 ```bash
 pnpm dev
 pnpm lint
+pnpm format
+pnpm format:check
+pnpm typecheck
 pnpm test:run
 pnpm build
 ```
