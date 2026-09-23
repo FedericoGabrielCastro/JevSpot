@@ -1,0 +1,17 @@
+---
+description: Backend stack for Jev Location Intelligence
+globs: backend/**/*
+alwaysApply: false
+---
+
+# Backend stack
+
+- App lives in `backend/`. Keep it independent from the frontend.
+- Package manager is **Poetry**. Do not add pip `requirements.txt` or uv lockfiles.
+- Runtime is **FastAPI + Pydantic + Uvicorn**.
+- Tests use **pytest**. Run them with `poetry run pytest` from `backend/`.
+- Do not add `.env` files or read environment variables in this phase.
+- Routes stay thin. Put orchestration in `services/`, vendor I/O in `adapters/`, and scores in `analysis/`.
+- Jev receives calculated metrics. It must not invent competitor, rent, or geography values.
+- Do not scrape Google Maps or Mercado Libre.
+- Do not present empty seed data as real analysis results.
