@@ -1,0 +1,35 @@
+---
+description: Keep frontend logic separate from UI
+globs: frontend/{logic,hooks,components,app}/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Logic vs UI
+
+The only frontend app is **Next.js**. Keep logic out of the UI anyway.
+
+Server state uses **TanStack Query** (`useQuery`, `useMutation`). Do not add Redux, Zustand, or ad-hoc fetch in components.
+
+| Layer | Path | May import |
+| --- | --- | --- |
+| Logic | `frontend/logic/` | TypeScript, `fetch`, query keys. No JSX, Tailwind, or `next`. |
+| Hooks | `frontend/hooks/` | `logic/` + `useQuery` / `useMutation`. No JSX or CSS. |
+| UI | `frontend/components/`, `frontend/app/` | hooks, components, Next.js, Tailwind. No raw `fetch`. |
+
+```ts
+// ❌ BAD — fetch and rendering in the same file
+export function Zones() {
+  const [zones, setZones] = useState([]);
+  useEffect(() => {
+    fetch("/api/analysis/1/zones").then((r) => r.json()).then(setZones);
+  }, []);
+  return <ul>{zones.map((zone) => <li key={zone.id}>{zone.name}</li>)}</ul>;
+}
+
+// ✅ GOOD — fetcher in logic, hook in hooks, JSX in UI
+const { data } = useAnalysisZones(analysisId);
+```
+
+- Do not add `.env` files or read `process.env` / `NEXT_PUBLIC_*`.
+- Call the API with relative paths such as `/api/analysis`.
+- Do not invent analysis data. Empty, loading, and error states are the only valid stand-ins.

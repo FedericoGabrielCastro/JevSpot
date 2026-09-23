@@ -1,0 +1,24 @@
+---
+description: Next.js App Router conventions for the frontend
+globs: frontend/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Next.js App Router
+
+- Use the App Router in `frontend/app`. Do not introduce `pages/`.
+- Default to Server Components. Add `"use client"` only for browser APIs, event handlers, or hooks.
+- Import navigation from `next/navigation`, never `next/router`.
+- In Next.js 16, `params` and `searchParams` are Promises. Await them in pages, layouts, and `generateMetadata`.
+- Read current Next.js guidance in `frontend/node_modules/next/dist/docs/` and `frontend/AGENTS.md` before using APIs that may have changed.
+- Place UI in `frontend/components/{map,analysis,zones,competitors}`.
+- App logic goes in `frontend/logic`. React Query hooks go in `frontend/hooks`. UI stays in `frontend/components` and `frontend/app`.
+- Import with the `@/*` alias.
+
+```tsx
+// ❌ BAD
+import { useRouter } from "next/router";
+
+// ✅ GOOD
+import { useRouter } from "next/navigation";
+```
