@@ -1,0 +1,26 @@
+---
+description: FastAPI layout and API conventions
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# FastAPI
+
+- Create the app with `create_app()` in `backend/app/main.py`.
+- Mount HTTP routes under `/api` through `app/api/`.
+- Validate requests and responses with Pydantic schemas in `app/schemas/`.
+- Keep SQLAlchemy models in `app/models/` when persistence is added. Do not reuse schemas as ORM models.
+- External APIs go behind `app/adapters/{google_places,rentals,geographic}`.
+- Do not implement `POST /api/analysis` until real data sources and metric code exist.
+
+```python
+# ❌ BAD
+@router.get("/zones")
+def list_zones():
+    return [{"name": "Castelar", "competitors": 14}]
+
+# ✅ GOOD
+@router.get("/health", response_model=HealthResponse)
+def get_health() -> HealthResponse:
+    return HealthResponse(status="ok")
+```
