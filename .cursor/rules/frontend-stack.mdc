@@ -12,5 +12,7 @@ alwaysApply: false
 - **Vite is not the app bundler.** It exists only because **Vitest** uses it.
 - Styling is **Tailwind CSS v4** (`@import "tailwindcss"` + `@theme`). Do not add a `tailwind.config.js`.
 - Tests use **Vitest + Testing Library**. Run them with `pnpm test:run` from `frontend/`.
+- Server state uses **TanStack Query** (`useQuery`, `useMutation`) in `frontend/hooks/`. Fetchers and query keys live in `frontend/logic/`.
+- Do not add `.env` files or read `process.env`.
 - Do not invent analysis, map, rental, or competitor values. Show empty or loading states until the backend returns data.
 - Keep Google API keys and other credentials on the server. Never expose them in the browser.

@@ -11,6 +11,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # Jev Location Intelligence frontend
 
 - Package manager: pnpm.
+- Next.js is the only frontend.
+- Server state: TanStack Query via `useQuery` and `useMutation` in `hooks/`.
+- Logic stays in `logic/`. UI stays in `components/` and `app/`.
+- Do not add env files or read `process.env`.
 - Tailwind CSS v4 lives in `app/globals.css`. Do not add a JS Tailwind config.
 - Vite is the Vitest runner only. Do not introduce a Vite app config for the product UI.
 - Keep analysis, competitor, rental, and map values empty until the backend returns them.

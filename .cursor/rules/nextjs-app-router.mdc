@@ -12,7 +12,7 @@ alwaysApply: false
 - In Next.js 16, `params` and `searchParams` are Promises. Await them in pages, layouts, and `generateMetadata`.
 - Read current Next.js guidance in `frontend/node_modules/next/dist/docs/` and `frontend/AGENTS.md` before using APIs that may have changed.
 - Place UI in `frontend/components/{map,analysis,zones,competitors}`.
-- Shared helpers go in `frontend/lib`, hooks in `frontend/hooks`, shared types in `frontend/types`.
+- App logic goes in `frontend/logic`. React Query hooks go in `frontend/hooks`. UI stays in `frontend/components` and `frontend/app`.
 - Import with the `@/*` alias.
 
 ```tsx

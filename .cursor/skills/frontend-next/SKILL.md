@@ -14,8 +14,9 @@ description: Scaffold and change the Jev Location Intelligence frontend. Use whe
 | Styles | Tailwind CSS v4 |
 | App bundler | Next.js (not Vite) |
 | Tests | Vitest + Vite + Testing Library |
+| Server state | TanStack Query (`useQuery`, `useMutation`) |
 
-Read `frontend/AGENTS.md` and `frontend/node_modules/next/dist/docs/` before using Next.js APIs.
+Next.js is the only frontend. Read `frontend/AGENTS.md` and `frontend/node_modules/next/dist/docs/` before using Next.js APIs.
 
 ## Commands
 
@@ -32,21 +33,19 @@ pnpm build
 
 ```text
 frontend/
-  app/                 # routes, layout, globals.css
-  components/map/
-  components/analysis/
-  components/zones/
-  components/competitors/
-  hooks/
-  lib/
-  types/
+  app/                 # Next.js routes
+  logic/               # API client, query keys, types
+  hooks/               # useQuery / useMutation
+  components/          # UI only
   __tests__/
 ```
 
 ## Rules
 
+- Package manager is pnpm.
 - Do not add Vite as a second application bundler.
+- Keep fetchers and query keys in `logic/`. Keep `useQuery` / `useMutation` in `hooks/`. Keep JSX in `components/` or `app/`.
+- Do not add env files or read `process.env`.
 - Do not present fake geographic or commercial data as real.
 - Keep the map as the primary UI once map work starts.
-- Keep the frontend independent from the backend.
 - Code comments stay in English.
