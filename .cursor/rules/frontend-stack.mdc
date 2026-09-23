@@ -1,0 +1,16 @@
+---
+description: Frontend stack for Jev Location Intelligence
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# Frontend stack
+
+- App lives in `frontend/`. Keep it independent from the backend.
+- Package manager is **pnpm**. Do not add npm or yarn lockfiles.
+- **Next.js App Router** is the application runtime and bundler (Turbopack/webpack).
+- **Vite is not the app bundler.** It exists only because **Vitest** uses it.
+- Styling is **Tailwind CSS v4** (`@import "tailwindcss"` + `@theme`). Do not add a `tailwind.config.js`.
+- Tests use **Vitest + Testing Library**. Run them with `pnpm test:run` from `frontend/`.
+- Do not invent analysis, map, rental, or competitor values. Show empty or loading states until the backend returns data.
+- Keep Google API keys and other credentials on the server. Never expose them in the browser.

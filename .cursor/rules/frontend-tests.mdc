@@ -1,0 +1,27 @@
+---
+description: Vitest conventions for the Next.js frontend
+globs: frontend/**/*.{test,spec}.{ts,tsx}
+alwaysApply: false
+---
+
+# Frontend tests
+
+- Use Vitest. Do not add Jest.
+- Import `expect`, `test`, and `describe` from `vitest`. Do not rely on globals.
+- Test synchronous Server and Client Components with Testing Library.
+- Do not unit-test async Server Components in Vitest. Cover those with later E2E tests.
+- Keep config in `frontend/vitest.config.mts`. Do not add a `vite.config` for the Next.js app.
+- Do not assert fabricated business metrics. Test UI structure and real backend contracts only.
+
+```tsx
+// ✅ GOOD
+import { render, screen } from "@testing-library/react";
+import { expect, test } from "vitest";
+
+test("renders the product heading", () => {
+  render(<Page />);
+  expect(
+    screen.getByRole("heading", { name: "Jev Location Intelligence" }),
+  ).toBeDefined();
+});
+```
