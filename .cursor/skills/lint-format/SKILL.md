@@ -15,7 +15,7 @@ From `frontend/`:
 pnpm lint
 pnpm format
 pnpm format:check
-pnpm typecheck
+pnpm typecheck   # runs next typegen, then tsc
 ```
 
 - ESLint for lint

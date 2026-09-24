@@ -13,7 +13,7 @@ The workflow lives at `.github/workflows/ci.yml`.
 
 | Job | Checks |
 | --- | --- |
-| `frontend` | `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, `pnpm test:run` |
+| `frontend` | `pnpm lint`, `pnpm format:check`, `pnpm typecheck` (`next typegen` then `tsc`), `pnpm test:run` |
 | `backend` | `poetry run black --check .`, `poetry run ruff check .`, `poetry run pytest` |
 
 ## Rules
