@@ -7,7 +7,10 @@ alwaysApply: false
 # CI
 
 - Workflow: `.github/workflows/ci.yml`
-- Frontend job: ESLint, Prettier check, `next typegen` + `tsc`, Vitest
-- Backend job: Black check, Ruff, pytest
+- Frontend lint: ESLint, Prettier check, `next typegen` + `tsc`
+- Frontend test: Vitest (`pnpm test:run`)
+- Backend lint: Black check, Ruff
+- Backend test: pytest
+- Lint and test jobs stay independent so tests still run if lint fails.
 - Do not add secrets or env files.
 - Do not add deploy jobs in this phase.

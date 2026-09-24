@@ -13,12 +13,17 @@ The workflow lives at `.github/workflows/ci.yml`.
 
 | Job | Checks |
 | --- | --- |
-| `frontend` | `pnpm lint`, `pnpm format:check`, `pnpm typecheck` (`next typegen` then `tsc`), `pnpm test:run` |
-| `backend` | `poetry run black --check .`, `poetry run ruff check .`, `poetry run pytest` |
+| `frontend-lint` | `pnpm lint`, `pnpm format:check`, `pnpm typecheck` |
+| `frontend-test` | `pnpm test:run` |
+| `backend-lint` | `poetry run black --check .`, `poetry run ruff check .` |
+| `backend-test` | `poetry run pytest` |
+
+Lint and test jobs run in parallel. A lint failure must not skip tests.
 
 ## Rules
 
 - Keep frontend and backend as separate jobs so they fail independently.
+- Keep lint and test as separate jobs so tests always run.
 - Use pnpm 11.1.2 and Python 3.12 to match the local stack.
 - Install frontend deps with `--frozen-lockfile`.
 - Do not add deploy or CD steps until there is something to deploy.
