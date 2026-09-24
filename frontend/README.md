@@ -26,4 +26,4 @@ pnpm test:run
 pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). The map uses OpenFreeMap tiles. Analyze calls the local FastAPI server at `http://127.0.0.1:8000` through a Next.js rewrite.

@@ -1,4 +1,8 @@
 export const queryKeys = {
+  places: {
+    search: (businessType: string) =>
+      ["places", "search", "buenos_aires", businessType] as const,
+  },
   analysis: {
     all: ["analysis"] as const,
     detail: (analysisId: string) => ["analysis", analysisId] as const,
