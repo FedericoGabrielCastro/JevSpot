@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
   pull_request:
 
 jobs:
-  frontend-lint:
-    name: Frontend lint
+  frontend-test:
+    name: Frontend test
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,12 +23,10 @@ jobs:
           cache: pnpm
           cache-dependency-path: frontend/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm format:check
-      - run: pnpm typecheck
+      - run: pnpm test:run
 
-  backend-lint:
-    name: Backend lint
+  backend-test:
+    name: Backend test
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -43,5 +41,4 @@ jobs:
           cache: poetry
           cache-dependency-path: backend/poetry.lock
       - run: poetry install --no-interaction --no-ansi
-      - run: poetry run black --check .
-      - run: poetry run ruff check .
+      - run: poetry run pytest
