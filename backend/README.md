@@ -16,6 +16,8 @@ The backend stays independent from the frontend. Do not add env files in this sc
 poetry install
 poetry run uvicorn app.main:app --reload
 poetry run pytest
+poetry run black .
+poetry run ruff check .
 ```
 
 API docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)

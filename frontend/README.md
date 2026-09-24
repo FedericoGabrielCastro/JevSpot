@@ -19,6 +19,9 @@ App logic lives in `logic/` and stays free of UI. React bindings live in `hooks/
 ```bash
 pnpm dev
 pnpm lint
+pnpm format
+pnpm format:check
+pnpm typecheck
 pnpm test:run
 pnpm build
 ```

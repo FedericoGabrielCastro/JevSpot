@@ -1,0 +1,13 @@
+---
+description: GitHub Actions CI must run the same lint and test commands
+globs: .github/workflows/**
+alwaysApply: false
+---
+
+# CI
+
+- Workflow: `.github/workflows/ci.yml`
+- Frontend job: ESLint, Prettier check, `next typegen` + `tsc`, Vitest
+- Backend job: Black check, Ruff, pytest
+- Do not add secrets or env files.
+- Do not add deploy jobs in this phase.

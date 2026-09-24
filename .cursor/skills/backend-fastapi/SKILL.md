@@ -25,6 +25,8 @@ Run from `backend/`:
 poetry install
 poetry run uvicorn app.main:app --reload
 poetry run pytest
+poetry run black .
+poetry run ruff check .
 ```
 
 ## Layout
@@ -51,4 +53,5 @@ backend/
 - Do not add env files.
 - Do not invent analysis data or geographic boundaries.
 - Keep adapters replaceable. Routes must not call vendor SDKs directly.
+- Tests use pytest. See [backend-pytest](../backend-pytest/SKILL.md).
 - Code comments stay in English.

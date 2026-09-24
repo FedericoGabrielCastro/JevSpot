@@ -1,0 +1,27 @@
+---
+description: pytest conventions for the FastAPI backend
+globs: backend/tests/**/*.py
+alwaysApply: false
+---
+
+# Backend tests
+
+- Use **pytest**. Do not add unittest, nose, or Jest-style runners.
+- Put tests in `backend/tests/`. Name files `test_*.py`.
+- Run them with `poetry run pytest` from `backend/`.
+- HTTP tests use FastAPI's `TestClient` and `create_app()`.
+- Test services and analysis functions without going through HTTP when the logic is not a route.
+- Do not assert fabricated business metrics. Test contracts, validation, and real calculated values only.
+
+```python
+# ✅ GOOD
+from fastapi.testclient import TestClient
+
+from app.main import create_app
+
+def test_health_returns_ok() -> None:
+    client = TestClient(create_app())
+    response = client.get("/api/health")
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+```

@@ -1,0 +1,17 @@
+---
+description: ESLint and Prettier conventions for the frontend
+globs: frontend/**/*.{ts,tsx,js,mjs,css,json,md}
+alwaysApply: false
+---
+
+# Frontend lint and format
+
+- Lint with **ESLint**. Format with **Prettier**.
+- Run from `frontend/`: `pnpm lint`, `pnpm format`, `pnpm format:check`.
+- Do not add a second formatter. Keep `eslint-config-prettier` last in `eslint.config.mjs`.
+- CI runs `pnpm lint` and `pnpm format:check`. Fix formatting before pushing.
+
+```bash
+pnpm format
+pnpm lint
+```

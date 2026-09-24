@@ -17,5 +17,6 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Do not add env files or read `process.env`.
 - Tailwind CSS v4 lives in `app/globals.css`. Do not add a JS Tailwind config.
 - Vite is the Vitest runner only. Do not introduce a Vite app config for the product UI.
+- Lint with ESLint. Format with Prettier (`pnpm lint`, `pnpm format`).
 - Keep analysis, competitor, rental, and map values empty until the backend returns them.
 - Preferred docs for RAG: this file, `../.cursor/rules/`, `../.cursor/skills/frontend-next/SKILL.md`, and `node_modules/next/dist/docs/`.
