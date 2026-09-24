@@ -10,7 +10,8 @@ alwaysApply: false
 - Package manager is **Poetry**. Do not add pip `requirements.txt` or uv lockfiles.
 - Runtime is **FastAPI + Pydantic + Uvicorn**.
 - Tests use **pytest**. Run them with `poetry run pytest` from `backend/`.
-- Do not add `.env` files or read environment variables in this phase.
+- Do not add `.env` files or commit secrets.
+- The Google Places API key stays server-side as `GOOGLE_PLACES_API_KEY`. Never send it to the frontend.
 - Routes stay thin. Put orchestration in `services/`, vendor I/O in `adapters/`, and scores in `analysis/`.
 - Jev receives calculated metrics. It must not invent competitor, rent, or geography values.
 - Do not scrape Google Maps or Mercado Libre.

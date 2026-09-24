@@ -11,7 +11,8 @@ alwaysApply: false
 - Validate requests and responses with Pydantic schemas in `app/schemas/`.
 - Keep SQLAlchemy models in `app/models/` when persistence is added. Do not reuse schemas as ORM models.
 - External APIs go behind `app/adapters/{google_places,rentals,geographic}`.
-- Do not implement `POST /api/analysis` until real data sources and metric code exist.
+- `POST /api/places/search` retrieves Google Places results through the adapter. Do not scrape Google Maps.
+- Do not implement `POST /api/analysis` until metric code exists.
 
 ```python
 # ❌ BAD

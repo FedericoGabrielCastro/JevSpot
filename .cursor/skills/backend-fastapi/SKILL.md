@@ -50,7 +50,7 @@ backend/
 
 - Package manager is Poetry.
 - Next.js is the only frontend; this service is the only backend API.
-- Do not add env files.
+- Do not commit secrets. `GOOGLE_PLACES_API_KEY` stays server-side.
 - Do not invent analysis data or geographic boundaries.
 - Keep adapters replaceable. Routes must not call vendor SDKs directly.
 - Tests use pytest. See [backend-pytest](../backend-pytest/SKILL.md).
