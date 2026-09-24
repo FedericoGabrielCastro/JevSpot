@@ -8,8 +8,8 @@ alwaysApply: false
 
 - Lint workflow: `.github/workflows/ci.yml`
 - Test workflow: `.github/workflows/test.yml`
-- Frontend lint: ESLint, Prettier check, `next typegen` + `tsc`
-- Backend lint: Black check, Ruff
-- Do not put Vitest or pytest in `ci.yml`.
+- Frontend test: Vitest (`pnpm test:run`)
+- Backend test: pytest
+- Do not mix lint commands into `test.yml`.
 - Do not add secrets or env files.
 - Do not add deploy jobs in this phase.
