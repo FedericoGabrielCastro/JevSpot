@@ -7,19 +7,25 @@ description: Maintain GitHub Actions CI for lint and tests. Use when editing .gi
 
 Cursor and Claude do not ship a first-party GitHub Actions skill. Use this project skill.
 
-Lint lives in `.github/workflows/ci.yml`. Tests belong in a separate workflow and PR.
+## Workflows
 
-## Lint jobs
-
-| Job | Checks |
+| File | Jobs |
 | --- | --- |
-| `frontend-lint` | `pnpm lint`, `pnpm format:check`, `pnpm typecheck` |
-| `backend-lint` | `poetry run black --check .`, `poetry run ruff check .` |
+| `.github/workflows/ci.yml` | `frontend-lint`, `backend-lint` |
+| `.github/workflows/test.yml` | `frontend-test`, `backend-test` |
+
+## Test jobs
+
+| Job | Command |
+| --- | --- |
+| `frontend-test` | `pnpm test:run` |
+| `backend-test` | `poetry run pytest` |
 
 ## Rules
 
+- Keep lint and tests in separate workflows.
 - Keep frontend and backend as separate jobs so they fail independently.
 - Use pnpm 11.1.2 and Python 3.12 to match the local stack.
 - Install frontend deps with `--frozen-lockfile`.
-- Do not add test or deploy jobs to `ci.yml`. Tests go in `.github/workflows/test.yml`.
-- If a lint check is added locally, add the same command to CI.
+- Do not add deploy or CD steps until there is something to deploy.
+- If a local test command changes, update `test.yml`.
